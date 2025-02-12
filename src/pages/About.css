@@ -1,0 +1,143 @@
+/* About Page Styling */
+.aboutPage {
+    font-family: "Arial", sans-serif;
+    color: #1b1b1b;
+    background-color: #d1d1d1;
+}
+
+/* Hero Section */
+.aboutHero {
+    background-image: url("src/images/about-hero.jpg"); /* Add a background image */
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #1b1b1b;
+    padding: 0 2rem;
+}
+
+.aboutHero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.aboutHero p {
+    font-size: 1.25rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Mission Section */
+.aboutMission {
+    padding: 4rem 2rem;
+    background-color: #1b1b1b;
+    text-align: center;
+}
+
+.aboutMission h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+.aboutMission p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    color: #d4d4d4;
+}
+
+.aboutTeam {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: #d1d1d1;
+}
+
+.aboutTeam h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #1b1b1b;
+}
+
+.teamMembers {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.teamCard {
+    background-color: #1b1b1b;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 250px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.teamCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.teamImage {
+    width: 100px;
+    height: 100px;
+    background-color: #d4d4d4;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+}
+
+.teamCard h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.teamCard p {
+    font-size: 1rem;
+    color: #cdcdcd;
+}
+
+/* Call-to-Action Section */
+.aboutCTA {
+    padding: 4rem 2rem;
+    background-color: #1b1b1b;
+    color: #fff;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+}
+
+.aboutCTA h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.aboutCTA p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.aboutCTA button {
+    background-color: #fff;
+    color: #1b1b1b;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.aboutCTA button:hover {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+}
