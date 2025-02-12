@@ -1,8 +1,8 @@
-import express from 'express';
-import path from 'path';
-import cors from 'cors';
-import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
+import express from "express";
+import path from "path";
+import cors from "cors";
+import nodemailer from "nodemailer";
+import dotenv from "dotenv";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -14,35 +14,43 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Define __dirname using import.meta.url
+// Define __dirname for ES modules using import.meta.url
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
-// Serve the static files from the 'dist' folder (built frontend)
-app.use(express.static(path.join(__dirname, 'dist')));
+// Serve static files from the 'dist' folder (frontend build output)
+app.use(express.static(path.join(__dirname, "dist")));
 
-// Serve the index.html for all routes
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+// Serve index.html for all routes (single-page application routing)
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
-// Create a nodemailer transporter to send emails
+// Set up nodemailer transporter to send emails
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: "gmail",
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
     },
 });
-
 // Endpoint to handle the email sending
-app.post('/send-email', async (req, res) => {
-    const { name, lastName, phone, email, message, startDate, endDate, totalPrice } = req.body;
+app.post("/send-email", async (req, res) => {
+    const {
+        name,
+        lastName,
+        phone,
+        email,
+        message,
+        startDate,
+        endDate,
+        totalPrice,
+    } = req.body;
 
     // Admin email configuration
     const adminMailOptions = {
         from: process.env.EMAIL_USER,
         to: process.env.EMAIL_USER,
-        subject: 'New Booking Request',
+        subject: "New Booking Request",
         text: `
         Name: ${name} ${lastName}
         Phone: ${phone}
@@ -58,7 +66,7 @@ app.post('/send-email', async (req, res) => {
     const customerMailOptions = {
         from: process.env.EMAIL_USER,
         to: email,
-        subject: 'Booking Confirmation - Jūrmalciema Jēkabi',
+        subject: "Booking Confirmation - Jūrmalciema Jēkabi",
         text: `
         Hi ${name},
 
@@ -82,10 +90,10 @@ app.post('/send-email', async (req, res) => {
     try {
         await transporter.sendMail(adminMailOptions);
         await transporter.sendMail(customerMailOptions);
-        res.status(200).json({ message: 'Emails sent successfully!' });
+        res.status(200).json({ message: "Emails sent successfully!" });
     } catch (error) {
-        console.error('Error sending emails:', error);
-        res.status(500).json({ error: 'Failed to send emails' });
+        console.error("Error sending emails:", error);
+        res.status(500).json({ error: "Failed to send emails" });
     }
 });
 
